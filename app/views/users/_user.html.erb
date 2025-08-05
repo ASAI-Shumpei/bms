@@ -23,7 +23,7 @@
 <% if !current_user&.admin?  %>    
 <div style="text-align: center; margin-top: 20px;">
   <% if params[:history] == 'true' %>
-    <%= link_to "あなたの現在の貸出状況を確認", user_path(@user),onclick: "return confirm('普通の理解力があれば確認は不要だと思うが？')", class: "button button-switcher" %>
+    <%= link_to "あなたの現在の貸出状況を確認", user_path(@user), class: "button button-switcher" %>
   <% else %>
     <%= link_to "あなたの読書履歴を確認", user_path(@user, history: true), class: "button button-switcher" %>
   <% end %>

@@ -21,7 +21,7 @@
           <%= link_to "アカウント情報", user_path(current_user), style: "text-decoration: none; color: #555; font-weight: bold;" %>
         </li>
         <li>
-          <%= link_to "ログアウト", logout_path, data: { "turbo-method": :delete , turbo_confirm: 'ログアウトしてよろしいか？' } ,style: "text-decoration: none; color: #555; font-weight: bold;" %>
+          <%= link_to "ログアウト", logout_path, data: { "turbo-method": :delete , turbo_confirm: 'ログアウトしてよろしいですか？' } ,style: "text-decoration: none; color: #555; font-weight: bold;" %>
         </li>
       <% else %> <%# ログインしていない場合 %>
         <li style="margin-right: 15px;">

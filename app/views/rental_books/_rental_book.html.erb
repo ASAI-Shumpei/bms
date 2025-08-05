@@ -18,7 +18,7 @@
 
     <% if rental_book.due_date < Time.now %>
     <p style="color: red; font-weight: bold;">
-      ※返却期限を過ぎています。品性は金では買えないよ。
+      ※返却期限を過ぎています!
     </p>
   <% end %>
     <%= button_to "返却する", rental_book_path(rental_book), method: :patch, data: { turbo_confirm: '本当に返却しますか？' }, class: "button button-danger" %>
