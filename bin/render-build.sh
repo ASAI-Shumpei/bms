@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 # Exit if any command fails
 set -e
+umask 000
 
 echo "Running bundle install..."
 bundle install
