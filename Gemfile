@@ -57,6 +57,10 @@ group :development do
   gem "web-console"
 end
 
+group :production do
+  gem "pg", "~> 1.2" # または最新版
+end
+
 group :test do
   # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
   gem "capybara"
