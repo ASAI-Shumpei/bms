@@ -6,7 +6,7 @@ echo "Running bundle install..."
 bundle install
 
 echo "Running assets:precompile..."
-rails assets:precompile
+bundle exec rails assets:precompile
 
 echo "Running db:migrate..."
-rails db:migrate
+bundle exec rails db:migrate
