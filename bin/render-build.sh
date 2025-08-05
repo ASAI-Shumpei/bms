@@ -2,13 +2,11 @@
 # Exit if any command fails
 set -e
 
-chmod -R 777 public/assets
-
 echo "Running bundle install..."
 bundle install
 
 echo "Running assets:precompile..."
-bundle exec rails assets:precompile
+RAILS_ENV=production bundle exec rake assets:precompile
 
 echo "Running db:migrate..."
 bundle exec rails db:migrate
