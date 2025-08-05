@@ -1,0 +1,75 @@
+<div class="book-card">
+
+<h2>
+    <strong>タイトル:</strong>
+    <%= book.title %>
+  </h2>
+
+<% if book.cover_image.attached? %>
+  <div class="book-cover-image">
+    <%= image_tag book.cover_image%>
+  </div>
+<% end %>
+
+  <p>
+    <strong>著者:</strong>
+    <%= book.author %>
+  </p>
+
+  <p>
+    <strong>Isbn:</strong>
+    <%= book.isbn %>
+  </p>
+
+  <% if book.genres.any? %>
+    <p>
+      <strong>ジャンル:</strong>
+      <%# ジャンル名をカンマ区切りで表示 %>
+      <%= book.genres.map(&:name).join(', ') %>
+    </p>
+  <% end %>
+
+  <p>
+    <strong>発刊日:</strong>
+    <%= book.published_date %>
+  </p>
+
+  <p>
+    <strong>貸し出し状況:</strong>
+    <%= book.status %>
+  </p>
+
+  <p>
+    <strong>貸し出し期間:</strong>
+    <%= book.default_due_days %>
+    日
+  </p>
+
+  <% if local_assigns[:show_page]%>
+    <div class="book-summary">  
+      <p>
+        <strong>あらすじ:</strong>
+        <%= book.description %>
+      </p>
+    </div>  
+  <% end %>
+
+  <% unless current_page?(book_path(book)) %>
+    <%= link_to "もっと詳しく", book, class: "show-link" %>
+  <% end %>
+
+<%if local_assigns[:show_page] && logged_in? && !current_user&.admin? %>
+  <%= book.status == "貸出可能" ? 
+        button_to("この本を借りる", rentals_path, params: { book_id: book.id }, data: { turbo_confirm: '本当に借りますか？' }, class: "button button-primary") :
+        content_tag(:button, book.status, class: "button button-nonaccess", disabled: true) %>
+<% end %>
+
+
+
+
+ <% if local_assigns[:show_page] && logged_in? && current_user&.admin? %>
+      <%= link_to "更新", edit_book_path(book), class: "button button-primary" %>
+      <%= button_to "削除", book, method: :delete, data: { turbo_confirm: '本当に削除しますか？' }, class: "button button-danger" %>
+  <% end %>
+
+</div>

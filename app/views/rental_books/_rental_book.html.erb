@@ -1,0 +1,32 @@
+
+<div class="book-card">
+    <p>
+      <strong>タイトル:</strong>
+      <%= rental_book.book.title %>
+    </p>
+
+    <p>
+      <strong>貸出日:</strong>
+      <%= rental_book.rented_at.strftime("%Y年%m月%d日") %>
+    </p>
+
+  <% if rental_book.returned_at.nil? %>
+    <p>
+      <strong>返却期限:</strong>
+      <%= rental_book.due_date.strftime("%Y年%m月%d日") %>
+    </p>
+
+    <% if rental_book.due_date < Time.now %>
+    <p style="color: red; font-weight: bold;">
+      ※返却期限を過ぎています。品性は金では買えないよ。
+    </p>
+  <% end %>
+    <%= button_to "返却する", rental_book_path(rental_book), method: :patch, data: { turbo_confirm: '本当に返却しますか？' }, class: "button button-danger" %>
+  <% else %>
+    <p>
+      <strong>返却日:</strong>
+      <%= rental_book.returned_at.strftime("%Y年%m月%d日") %>
+    </p>
+  <% end %>
+   
+  </div>

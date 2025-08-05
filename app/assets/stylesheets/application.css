@@ -1,0 +1,540 @@
+/*
+ * This is a manifest file that'll be compiled into application.css.
+ *
+ * With Propshaft, assets are served efficiently without preprocessing steps. You can still include
+ * application-wide styles in this file, but keep in mind that CSS precedence will follow the standard
+ * cascading order, meaning styles declared later in the document or manifest will override earlier ones,
+ * depending on specificity.
+ *
+ * Consider organizing styles into separate files for maintainability.
+ */
+/* app/assets/stylesheets/application.css (または custom.css など新規作成) */
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f7f6;
+    color: #333;
+}
+
+
+.page-container h1 {
+    text-align: center; 
+    margin-bottom: 25px;
+    color: #333;
+}
+
+/* テーブルのスタイル */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 12px;
+    text-align: left;
+}
+
+th {
+    background-color: #e2e6ea;
+    color: #333;
+}
+
+tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+tr:hover {
+    background-color: #f1f1f1;
+}
+
+/* リンクボタンのスタイル */
+.button {
+    display: inline-block;
+    padding: 8px 15px;
+    margin: 5px 0;
+    border-radius: 4px;
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.button-primary { /* 青いボタン */
+    background-color: #007bff;
+}
+.button-primary:hover {
+    background-color: #0056b3;
+}
+
+.button-success { /* 緑のボタン */
+    background-color: #28a745;
+}
+.button-success:hover {
+    background-color: #218838;
+}
+
+.button-danger { /* 赤いボタン */
+    background-color: #dc3545;
+}
+.button-danger:hover {
+    background-color: #c82333;
+}
+
+.button-nonaccess {
+    background-color: #6c757d; /* 灰色など、無効な状態を示す色 */
+    color: #fff; /* 文字色を白に設定 */
+    cursor: not-allowed; /* マウスカーソルを禁止マークにする */
+    opacity: 0.65; /* 透明度を下げて、無効感を出す */
+}
+
+/* 貸し出し状況と履歴を切り替えるボタンのスタイル */
+.button-switcher {
+    background-color: #6c757d; /* 落ち着いたグレー */
+}
+
+.button-switcher:hover {
+    background-color: #5a6268;
+}
+
+/* ヘッダーのスタイル調整 (既存のスタイルに追加) */
+header {
+    /* 既存のヘッダースタイル */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* ヘッダーにも影 */
+}
+
+/* notice/alertメッセージのスタイル (application.html.erb に適用) */
+/* notice/alertメッセージのスタイル (application.html.erb に適用) */
+/* ↓ここを修正↓ */
+.notice { /* p[style="color: green"] だった部分を .notice に変更 */
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.alert { /* p[style="color: red"] だった部分を .alert に変更 */
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-align: center;
+    margin-bottom: 20px;
+}
+/* ↑ここまで修正↑ */
+
+/* 書籍一覧全体のコンテナ */
+#books {
+    display: grid; /* グリッドレイアウトを使用 */
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* 列の自動調整と最小幅設定 */
+    gap: 25px; /* グリッドアイテム間の隙間 */
+    padding: 20px;
+    max-width: 1200px; /* 全体の最大幅（必要に応じて調整） */
+    margin: 20px auto; /* 中央寄せと上下の余白 */
+}
+
+/* 各書籍カードのスタイル */
+
+.book-card {
+
+ background-color: #ffffff; /* カードの背景色 */
+
+ border: 1px solid #e0e0e0; /* 軽いボーダー */
+
+ border-radius: 8px; /* 角を丸くする */
+
+ box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08); /* 影で立体感を出す */
+
+ padding: 20px;
+
+ display: flex; /* flexboxで中身を配置 */
+
+ flex-direction: column; /* 要素を縦に並べる */
+
+ align-items: center; 
+
+ transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+
+}
+
+
+
+.book-card:hover {
+
+ transform: translateY(-5px); /* マウスオーバーで少し浮き上がる */
+
+ box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15); /* 影を濃くする */
+
+}
+
+
+
+/* 画像コンテナのスタイル */
+
+.book-card .book-cover-image {
+
+ width: 180px; /* 画像の幅を固定 */
+
+ height: 180px; /* 画像の高さを固定 */
+
+ overflow: hidden; /* はみ出した部分を隠す */
+
+ margin-bottom: 15px;
+
+ border-radius: 4px; /* 画像の角を少し丸く */
+
+ display: flex; /* 画像を中央寄せするため */
+
+ justify-content: center;
+
+ align-items: center;
+
+}
+
+
+
+.book-card .book-cover-image img {
+
+ max-width: 100%; /* 親要素の幅に合わせて最大幅 */
+
+ max-height: 150%; /* 親要素の高さに合わせて最大高 */
+
+ object-fit: contain; /* 画像がコンテナに収まるように調整 (アスペクト比を保持) */
+
+ border: 1px solid #ddd; /* 画像に枠線 */
+
+}
+
+
+
+/* 各情報のスタイル */
+
+.book-card h2 { /* タイトル */
+
+ font-size: 1.4em;
+
+color: #333;
+
+ margin-bottom: 8px;
+
+ line-height: 1.3;
+
+}
+
+
+
+.book-card p { /* 著者、ISBN、価格など */
+
+ font-size: 0.95em;
+
+ color: #555;
+
+ margin-bottom: 5px;
+
+ line-height: 1.4;
+
+}
+
+
+
+.book-card p strong {
+
+ color: #222;
+
+}
+
+
+
+.book-card .book-summary {
+
+white-space: pre-wrap;
+
+text-indent: 1.5em;
+
+line-height: 1.6;
+
+margin-top: 10px;
+
+
+
+margin-bottom: 10px;
+
+margin-left: 0;
+
+margin-right: 0;
+
+padding: 15px;
+
+border-left: 3px solid #007bff;
+
+background-color: #f9f9f9;
+
+}
+
+
+
+/* "Show this book" リンクのスタイル */
+
+.book-card .show-link {
+
+display: inline-block;
+
+background-color: #007bff; /* プライマリーカラー */
+
+color: white;
+
+padding: 8px 15px;
+
+margin-top: 15px;
+
+border-radius: 5px;
+
+text-decoration: none;
+
+font-weight: bold;
+
+transition: background-color 0.3s ease;
+
+}
+
+
+
+.book-card .show-link:hover {
+
+  background-color: #0056b3;
+
+}
+
+
+/* 新規書籍追加ボタンのスタイル (もし他の場所で使うなら汎用的に) */
+.new-book-button {
+    display: block; /* ブロック要素として配置 */
+    width: fit-content; /* 内容の幅に合わせる */
+    margin: 30px auto; /* 上下の余白と中央寄せ */
+    background-color: #28a745; /* 成功色 */
+    color: white;
+    padding: 12px 25px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-size: 1.1em;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.new-book-button:hover {
+    background-color: #218838;
+}
+
+.button {
+    display: inline-block;
+    padding: 8px 15px;
+    margin: 5px 5px; /* ボタン間の余白を追加 */
+    border-radius: 4px;
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+    border: none; /* button_toはデフォルトでborderがある場合があるので消す */
+    cursor: pointer; /* マウスカーソルをポインターに */
+}
+
+.button-primary { /* 青いボタン */
+    background-color: #007bff;
+}
+.button-primary:hover {
+    background-color: #0056b3;
+}
+
+.button-danger { /* 赤いボタン */
+    background-color: #dc3545;
+}
+.button-danger:hover {
+    background-color: #c82333;
+}
+
+/* ヘッダーのスタイル調整 (既存のスタイルに追加) */
+header {
+    /* 既存のヘッダースタイル */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* ヘッダーにも影 */
+}
+
+/* フォーム全体のコンテナ */
+.form-container {
+    max-width: 600px; /* フォームの最大幅を制限して見やすくする */
+    margin: 30px auto; /* 上下左右中央に配置 */
+    padding: 25px 35px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* 影で立体感を出す */
+}
+
+/* 各フォームフィールドのグループ */
+.form-field {
+    margin-bottom: 20px; /* 各フィールドの下に余白 */
+}
+
+/* ラベルのスタイル */
+.form-field label {
+    display: block; /* ラベルと入力欄を縦並びにする */
+    margin-bottom: 8px; /* ラベルと入力欄の間の余白 */
+    font-weight: bold; /* ラベルを太字に */
+    color: #333; /* 文字色 */
+    font-size: 1.0em;
+}
+
+/* テキスト入力、メール入力、パスワード入力などの共通スタイル */
+.form-field input[type="text"],
+.form-field input[type="email"],
+.form-field input[type="password"],
+.form-field input[type="number"],
+.form-field input[type="date"],
+.form-field textarea {
+    width: 100%; /* 親要素の幅いっぱいに広げる */
+    padding: 12px; /* 内側の余白 */
+    border: 1px solid #ddd; /* 枠線 */
+    border-radius: 5px; /* 角を丸くする */
+    box-sizing: border-box; /* パディングとボーダーを幅に含める */
+    font-size: 1.0em;
+    color: #555;
+    transition: border-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out; /* ホバー・フォーカス時のアニメーション */
+}
+
+/* 入力フィールドがフォーカスされた時のスタイル */
+.form-field input[type="text"]:focus,
+.form-field input[type="email"]:focus,
+.form-field input[type="password"]:focus,
+.form-field input[type="number"]:focus,
+.form-field input[type="date"]:focus,
+.form-field textarea:focus {
+    border-color: #007bff; /* フォーカス時に青い枠線 */
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25); /* フォーカス時に薄い影 */
+    outline: none; /* デフォルトのアウトラインを消す */
+}
+
+/* チェックボックス・ラジオボタンのスタイル調整 */
+.form-field input[type="checkbox"],
+.form-field input[type="radio"] {
+    margin-right: 8px; /* ラベルとの間に少しスペース */
+}
+
+.form-field .checkbox-label { /* チェックボックスやラジオボタンに続くラベル用 */
+    display: inline-block; /* チェックボックスの横にラベルを配置 */
+    font-weight: normal; /* チェックボックスのラベルは太字にしない */
+    color: #333;
+}
+
+/* 送信ボタンのスタイル */
+.form-submit-button {
+    width: 100%; /* 幅いっぱいに広げる */
+    padding: 15px;
+    background-color: #007bff; /* ボタンの色 */
+    color: white; /* 文字色 */
+    border: none;
+    border-radius: 5px;
+    font-size: 1.1em;
+    font-weight: bold;
+    cursor: pointer; /* マウスオーバーでカーソルをポインターに */
+    transition: background-color 0.3s ease-in-out; /* ホバー時のアニメーション */
+}
+
+/* 送信ボタンがホバーされた時 */
+.form-submit-button:hover {
+    background-color: #0056b3; /* ホバーで少し暗くする */
+}
+
+/* エラーメッセージ全体のスタイル */
+.error-messages {
+    color: #dc3545; /* 赤色 */
+    margin-bottom: 20px;
+    padding: 10px;
+    border: 1px solid #f5c6cb;
+    background-color: #f8d7da;
+    border-radius: 5px;
+}
+
+.error-messages h2 {
+    font-size: 1.1em;
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+
+.error-messages ul {
+    list-style-type: none; /* リストの点を消す */
+    padding: 0;
+    margin: 0;
+}
+
+.error-messages li {
+    margin-bottom: 5px;
+}
+
+
+
+
+/* ヘッダーのロゴとタイトル部分 */
+.app-title a {
+    display: flex; /* flexboxを使って画像とテキストを並べる */
+    align-items: center; /* 垂直方向中央揃え */
+    text-decoration: none; /* 下線をなくす */
+    color: #333; /* デフォルトのテキスト色 */
+}
+
+.app-title img {
+    height: 90px; /* ロゴ画像の高さを調整（適宜変更） */
+    width: auto;
+    margin-right: 15px; /* ロゴとタイトルの間のスペース */
+    border-radius: 5px; /* 少し角丸にする */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* 軽い影をつける */
+}
+
+/* ページネーションのスタイル               */
+/* -------------------------------------- */
+.pagination-container {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    text-align: center; /* リンクを中央揃えにする */
+}
+
+.pagination {
+    display: inline-block;
+}
+
+.pagination > * {
+    display: inline-block;
+    padding: 8px 12px;
+    margin: 0 4px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    text-decoration: none;
+    color: #007bff;
+    transition: background-color 0.3s;
+}
+
+.pagination > *:hover {
+    background-color: #f0f0f0;
+}
+
+.pagination .current {
+    background-color: #007bff;
+    color: white;
+    border-color: #007bff;
+}
+
+.pagination .prev,
+.pagination .pagination .next {
+    font-weight: bold;
+}
+
+.pagination .first,
+.pagination .last {
+    display: none; /* First と Last リンクは非表示にすることも可能 */
+}

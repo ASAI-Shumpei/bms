@@ -1,0 +1,57 @@
+<div class="book-card">
+<h2>
+    <strong>
+    <%= user.username %>
+    さんのアカウント情報
+    </strong>
+  </h2>
+
+
+  <p>
+    <strong>Username:</strong>
+    <%= user.username %>
+  </p>
+
+  <p>
+    <strong>Email:</strong>
+    <%= user.email %>
+  </p>
+
+  <%= link_to "更新", edit_user_path(@user), class: "button button-primary" %>
+</div>
+
+<% if !current_user&.admin?  %>    
+<div style="text-align: center; margin-top: 20px;">
+  <% if params[:history] == 'true' %>
+    <%= link_to "あなたの現在の貸出状況を確認", user_path(@user),onclick: "return confirm('普通の理解力があれば確認は不要だと思うが？')", class: "button button-switcher" %>
+  <% else %>
+    <%= link_to "あなたの読書履歴を確認", user_path(@user, history: true), class: "button button-switcher" %>
+  <% end %>
+</div>
+
+
+  <% if params[:history] == 'true' %>
+    <h2>
+      <strong>
+      <%= user.username %>
+      さんの貸出履歴
+      </strong>
+    </h2>
+  <% else %>
+    <h2>
+      <strong>
+      <%= user.username %>
+      さんの貸出状況
+      </strong>
+    </h2>
+  <% end %>
+
+  <% if @rental_books.any? %>
+    <%= render @rental_books %>
+    <div class="pagination-container">
+      <%= paginate @rental_books %>
+    </div>
+  <% else %>
+    <p>現在、または過去に借りた本はありません。</p>
+  <% end %>
+<% end %> 

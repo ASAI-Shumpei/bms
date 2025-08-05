@@ -1,0 +1,45 @@
+<div class="form-container">
+<%= form_with(model: user) do |form| %>
+  <% if user.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(user.errors.count, "error") %> prohibited this user from being saved:</h2>
+
+      <ul>
+        <% user.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-field">
+    <%= form.label :username,"名前", style: "display: block" %>
+    <%= form.text_field :username %>
+  </div>
+
+  <div class="form-field">
+    <%= form.label :email,"メールアドレス",style: "display: block" %>
+    <%= form.email_field :email %>
+  </div>
+
+
+
+  <div class="form-field">
+    <%= form.label :password, "パスワード",style: "display: block" %>
+    <%= form.password_field :password %>
+  </div>
+
+  <div class="form-field">
+    <%= form.label :password_confirmation, "パスワード（確認用）", style: "display: block"%>
+    <%= form.password_field :password_confirmation %>
+  </div>
+
+  <div>
+    <% if controller.action_name == 'new'  || controller.action_name == 'create' %>
+        <%= form.submit "アカウント作成", class: "form-submit-button" %>
+      <% elsif controller.action_name == 'edit'  || controller.action_name == 'update' %>
+        <%= form.submit "アカウント情報を更新", class: "form-submit-button" %>
+    <% end %>    
+  </div>
+<% end %>
+</div>

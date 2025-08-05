@@ -1,0 +1,70 @@
+<div class="form-container">
+<%= form_with(model: book) do |form| %>
+  <% if book.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(book.errors.count, "error") %> prohibited this book from being saved:</h2>
+
+      <ul>
+        <% book.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+   <div class="form-field">
+    <%= form.label :title, "タイトル",style: "display: block" %>
+    <%= form.text_field :title %>
+  </div>
+
+  <div class="form-field">
+    <%= form.label :author, "著者",style: "display: block" %>
+    <%= form.text_field :author %>
+  </div>
+
+  <div class="form-field">
+    <%= form.label :isbn,"ISBN", style: "display: block" %>
+    <%= form.text_field :isbn %>
+  </div>
+
+  <div class="field">
+    <%= form.label :ジャンル %>
+    <div class="genre-checkboxes">
+      <% @genres.each do |genre| %>
+        <label>
+          <%= check_box_tag "book[genre_ids][]", genre.id, book.genres.include?(genre) %>
+          <%= genre.name %>
+        </label>
+      <% end %>
+    </div>
+  </div>
+
+
+  <div class="form-field">
+    <%= form.label :published_date, "発刊日",style: "display: block" %>
+    <%= form.date_field :published_date %>
+  </div>
+
+  <div class="form-field">
+    <%= form.label :default_due_days,"貸し出し期間", style: "display: block" %>
+    <%= form.number_field :default_due_days %>
+  </div>
+
+  <div class="form-field">
+    <%= form.label :description, "あらすじ",style: "display: block" %>
+    <%= form.text_area :description %>
+  </div>
+ 
+  <div class="form-field">
+    <%= form.label :cover_image, "本の表紙", style: "display: block" %>
+    <%= form.file_field :cover_image %>
+  </div>  
+
+  <div>
+    <% if controller.action_name == 'new' %>
+        <%= form.submit "書籍を登録", class: "form-submit-button" %>
+      <% elsif controller.action_name == 'edit' %>
+        <%= form.submit "書籍情報を更新", class: "form-submit-button" %>
+    <%end%>    
+  </div>
+<% end %>

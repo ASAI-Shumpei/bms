@@ -1,0 +1,12 @@
+ja:
+  helpers:
+    submit:
+      create: "登録する"
+      update: "更新する"
+      submit: "保存する" # 汎用的な保存ボタンのテキスト
+    user: # Userモデルのフォーム用
+      create: "新規ユーザーを登録" # UsersControllerの新規作成フォーム
+      update: "ユーザー情報を更新" # UsersControllerの編集フォーム
+    book: # Bookモデルのフォーム用
+      create: "書籍を登録" # BooksControllerの新規作成フォーム
+      update: "書籍情報を更新" # BooksControllerの編集フォーム

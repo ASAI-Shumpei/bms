@@ -1,0 +1,38 @@
+
+
+<% content_for :title, "Books" %>
+<div class="page-container">
+<h1>書籍一覧</h1>
+
+<div class="form-container">
+  <%= form_with(url: books_path, method: :get, local: true) do |form| %>
+   <div class="form-field">
+      <%= form.label :title_search, "名前で検索" %>
+      <%= form.text_field :title_search, value: params[:title_search] %>
+    </div>
+
+    <div class="form-field">
+      <%= form.label :genre_search, "ジャンルで検索" %>
+      <%= form.select :genre_search, options_from_collection_for_select(Genre.all, :id, :name, params[:genre_search]), { include_blank: 'すべて' }, { class: "genre-select" } %>
+    </div>
+
+    <%= form.submit "検索", class: "form-submit-button" %>
+  <% end %>
+</div>
+
+<div class="pagination-container">
+    <%= paginate @books %>
+</div>
+
+
+<div id="books">
+  <% @books.each do |book| %>
+    <%= render book %>
+  <% end %>
+</div>
+
+<div class="pagination-container">
+    <%= paginate @books %>
+</div>
+</div>
+
