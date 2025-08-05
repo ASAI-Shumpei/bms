@@ -19,3 +19,13 @@ Genre.find_or_create_by!(name: "陰謀論")
 Genre.find_or_create_by!(name: "ライトノベル")
 Genre.find_or_create_by!(name: "洋書")
 Genre.find_or_create_by!(name: "雑誌")
+
+if User.find_by(email: "admin@example.com").nil?
+  User.create!(
+    email: "admin@example.com",
+    password: "Yuki1bancha", # 本番環境ではより強力なパスワードを設定してください
+    password_confirmation: "Yuki1bancha",
+    admin: true
+  )
+  puts "Admin user created."
+end
