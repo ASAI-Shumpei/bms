@@ -58,7 +58,7 @@ group :development do
 end
 
 group :production do
-  gem "pg", "~> 1.2" # または最新版
+  gem "pg", "~> 1.6" # または最新版
 end
 
 group :test do
